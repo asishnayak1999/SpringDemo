@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="carNewCar2" class="com.fis.app.model.Car"
+		autowire="byType" init-method="doInIt" destroy-method="doDestroy" scope="prototype">
+
+		<property name="carName" value="Creta"></property>
+		<property name="carNumber" value="245"></property>	
+		<property name = "sitList">
+			<list>
+				<ref bean="sit1" />
+				<ref bean="sit2" />
+				<ref bean="sit3" />
+				<ref bean="sit4" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="eee" class="com.fis.app.model.Engine">
+		<property name="engineName" value="TataEngine"></property>
+		<property name="power" value="1200"></property>
+	</bean>
+
+	<bean id="mssss" class="com.fis.app.model.MusicSystem">
+		<property name="name" value="Poineer" />
+	</bean>
+
+	<bean id="sit1" class = "com.fis.app.model.Sits">
+		<property name = "brandName" value = "Trumom"/>
+		<property name = "color" value = "black"/>
+	</bean>
+
+	<bean id="sit2" class = "com.fis.app.model.Sits">
+		<property name = "brandName" value = "Trumom"/>
+		<property name = "color" value = "black"/>
+	</bean>
+	
+	<bean id="sit3" class = "com.fis.app.model.Sits">
+		<property name = "brandName" value = "Luvlap"/>
+		<property name = "color" value = "black"/>
+	</bean>
+	
+	<bean id="sit4" class = "com.fis.app.model.Sits">
+		<property name = "brandName" value = "Luvlap"/>
+		<property name = "color" value = "black"/>
+	</bean>
+
+
+
+</beans>
