@@ -1,9 +1,14 @@
 package com.fis.app.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
 
 public class Car implements Serializable,Comparable<Car> {
 
@@ -12,6 +17,8 @@ public class Car implements Serializable,Comparable<Car> {
 	private Engine e;
 	private MusicSystem ms;
 	private List<Sits> sitList;
+	String path;
+	File f;
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -83,12 +90,35 @@ public class Car implements Serializable,Comparable<Car> {
 	
 	public void doInIt()
 	{
-		System.out.println(" do init called ");
+		System.out.println(" do init called ");	
+		//path = "‪‪C:\\demo\\cardata.txt";
+		f = new File("C:\\Users\\User\\Desktop\\carDemo.txt");
 	}
 	
 	public void doDestroy()
 	{
 		System.out.println(" do destroy  called ");
+		
+		PrintWriter wr = null;
+		System.out.println("Started Printing to the File..Wait");
+		try {
+			System.out.println("-->>1");
+			FileWriter fw = new FileWriter(f,true);
+			
+			wr = new PrintWriter(fw);
+			//System.out.println("-->>2 "+this.getCarName()+"- "+f.getAbsolutePath());
+			wr.append(this.getCarNumber() +getCarName() + getE() + getMs() + getSitList());
+			//System.out.println("===>> 3");
+			wr.close();
+			//+getCarName() ++ getE() + getMs() + getSitList(
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(wr!=null)wr.close();
+		}
+		System.out.println("Printed Into the File !!");
+
 	}
 	
 	
